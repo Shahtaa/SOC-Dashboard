@@ -1,6 +1,7 @@
-// main.jsx
+// Import the necessary dependencies
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client'; // Import createRoot from react-dom/client
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// Use createRoot to render the root component
+createRoot(document.getElementById('root')).render(<App />);

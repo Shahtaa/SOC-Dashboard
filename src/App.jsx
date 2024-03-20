@@ -2,6 +2,7 @@
 import React from 'react';
 import PalomuuriComponent from './PalomuuriComponent';
 import ServerLogComponent from './ServerLogComponent';
+import ReititinComponent from './ReititinComponent';
 
 const App = () => {
   return (
@@ -12,6 +13,9 @@ const App = () => {
       </div>
       <div>
         <ServerLogComponent />
+      </div>
+      <div>
+        <ReititinComponent />
       </div>
     </div>
   );

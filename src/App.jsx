@@ -3,6 +3,7 @@ import React from 'react';
 import PalomuuriComponent from './PalomuuriComponent';
 import ServerLogComponent from './ServerLogComponent';
 import ReititinComponent from './ReititinComponent';
+import TyoasemaComponent from './TyoasemaComponent';
 
 const App = () => {
   return (
@@ -16,6 +17,9 @@ const App = () => {
       </div>
       <div>
         <ReititinComponent />
+      </div>
+      <div>
+        <TyoasemaComponent />
       </div>
     </div>
   );

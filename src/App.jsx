@@ -1,3 +1,4 @@
+// App.jsx
 import React from 'react';
 import PalomuuriComponent from './PalomuuriComponent';
 

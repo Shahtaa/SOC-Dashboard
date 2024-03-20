@@ -5,7 +5,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #fce0d1;
 }
 
 .container {
@@ -14,8 +14,22 @@ body {
   padding: 20px;
 }
 
-h1 {
-  color: #333;
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-/* Add more styles as needed */
+.grid-item {
+  flex: 1 1 calc(50% - 2rem - 20px); /* Two items per row with gap between them and considering border */
+  min-width: calc(50% - 2rem - 20px); /* Set minimum width for grid items */
+  border: 1rem solid #69013b; /* Update border width and color */
+}
+
+@media (max-width: 768px) {
+  .grid-item {
+    flex-basis: calc(
+      50% - 2rem - 20px
+    ); /* Two items per row with gap between them and considering border */
+  }
+}

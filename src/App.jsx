@@ -1,7 +1,13 @@
-const App = () => (
-  <div>
-    <p>Hello world</p>
-  </div>
-)
+import React from 'react';
+import PalomuuriComponent from './PalomuuriComponent';
 
-export default App
+const App = () => {
+  return (
+    <div>
+      <h1>My SOC Dashboard</h1>
+      <PalomuuriComponent />
+    </div>
+  );
+};
+
+export default App;

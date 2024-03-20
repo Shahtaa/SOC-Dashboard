@@ -1,9 +1,10 @@
 // App.jsx
 import React from 'react';
-import PalomuuriComponent from './PalomuuriComponent';
-import ServerLogComponent from './ServerLogComponent';
-import ReititinComponent from './ReititinComponent';
-import TyoasemaComponent from './TyoasemaComponent';
+import PalomuuriComponent from './components/PalomuuriComponent';
+
+import ServerLogComponent from './components/ServerLogComponent';
+import ReititinComponent from './components/ReititinComponent';
+import TyoasemaComponent from './components/TyoasemaComponent';
 
 const App = () => {
   return (

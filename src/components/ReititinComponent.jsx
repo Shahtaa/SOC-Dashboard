@@ -1,4 +1,3 @@
-// ReititinComponent.jsx
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
@@ -27,28 +26,39 @@ const ReititinComponent = () => {
 
     const renderChart = () => {
         const ctx = document.getElementById('reititinChart');
+        const filteredData = logData.filter(entry => ['forwarded', 'denied', 'blocked', 'allowed'].includes(entry.action));
+        const actionCounts = {};
+
+        filteredData.forEach(entry => {
+            const action = entry.action;
+            if (actionCounts[action]) {
+                actionCounts[action]++;
+            } else {
+                actionCounts[action] = 1;
+            }
+        });
+
+        const labels = Object.keys(actionCounts);
+        const data = Object.values(actionCounts);
+
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: labels,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
+                    label: '# of Actions',
+                    data: data,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(75, 192, 192, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(75, 192, 192, 1)'
                     ],
                     borderWidth: 1
                 }]

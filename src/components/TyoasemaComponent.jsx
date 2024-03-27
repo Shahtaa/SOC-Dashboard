@@ -63,9 +63,20 @@ const TyoasemaComponent = () => {
 
     return (
         <div>
-            <h2>Tyoasema Log Data</h2>
+            <h3>Tyoasema Log Data</h3>
             <div>
                 <canvas id="tyoasemaChart" width="400" height="400"></canvas>
+            </div>
+            <div>
+                <h3>Työaseman Lokit:
+                </h3>
+                <ul>
+                    {logData.map((log, index) => (
+                        <li key={index}>
+                            <strong>{log.timestamp}</strong>: Käyttäjä "{log.username}" {log.event}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 // PalomuuriComponent.jsx
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Chart from 'chart.js/auto';
 
 const PalomuuriComponent = () => {
@@ -11,11 +12,11 @@ const PalomuuriComponent = () => {
                 const response = await fetch('https://raw.githubusercontent.com/bc-web-ohjelmistokehitys/soc_data/01e6194a0f01540db2d884135f479d64d557882f/palomuuri_mock.json');
                 const data = await response.json();
                 setLogData(data);
+                console.log(data)
             } catch (error) {
                 console.error('Error fetching log data:', error);
             }
         };
-
         fetchLogData();
     }, []);
 
@@ -78,6 +79,24 @@ const PalomuuriComponent = () => {
             <h2>Palomuuri Log Data</h2>
             <div>
                 <canvas id="palomuuriChart"></canvas>
+            </div>
+            <h3>Estetyt yhteydenotot:</h3>
+            <ul>
+                {logData.map(entry => 
+                    entry.action === 'blocked'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
+            </ul>
+            <h3>Hyökkäysten havainnointi:</h3>
+            <div>
+            {logData.map(entry => 
+                    entry.action === 'detected'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
             </div>
         </div>
     );

@@ -68,7 +68,8 @@ const TyoasemaComponent = () => {
                 <canvas id="tyoasemaChart" width="400" height="400"></canvas>
             </div>
             <div>
-                <h2>Työaseman Lokit</h2>
+                <h3>Työaseman Lokit:
+                </h3>
                 <ul>
                     {logData.map((log, index) => (
                         <li key={index}>

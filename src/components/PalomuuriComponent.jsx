@@ -1,5 +1,6 @@
 // PalomuuriComponent.jsx
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Chart from 'chart.js/auto';
 
 const PalomuuriComponent = () => {
@@ -15,7 +16,6 @@ const PalomuuriComponent = () => {
                 console.error('Error fetching log data:', error);
             }
         };
-
         fetchLogData();
     }, []);
 
@@ -79,6 +79,24 @@ const PalomuuriComponent = () => {
             <div>
                 <canvas id="palomuuriChart"></canvas>
             </div>
+            <h3>Estetyt yhteydenotot:</h3>
+            <ul>
+                {logData.map(entry => 
+                    entry.action === 'blocked'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
+            </ul>
+            <h3>Hyökkäysten havainnointi:</h3>
+            <ul>
+            {logData.map(entry => 
+                    entry.action === 'detected'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
+            </ul>
         </div>
     );
 };

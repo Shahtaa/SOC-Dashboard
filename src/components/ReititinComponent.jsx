@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Chart from 'chart.js/auto';
 
 const ReititinComponent = () => {
@@ -79,6 +80,24 @@ const ReititinComponent = () => {
             <div>
                 <canvas id="reititinChart" width="400" height="400"></canvas>
             </div>
+            <h3>Liikenteen ohjaukset:</h3>
+            <ul>
+            {logData.map(entry => 
+                    entry.action === 'forwarded'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
+            </ul>
+            <h3>Verkon virheilmoitukset:</h3>
+            <ul>
+            {logData.map(entry => 
+                    entry.action === 'blocked'
+                        ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
+                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                        : null
+                )}
+            </ul>
         </div>
     );
 };

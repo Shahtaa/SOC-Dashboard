@@ -14,6 +14,10 @@ body {
   padding: 20px;
 }
 
+.container h1 {
+  text-align: center;
+}
+
 .grid-container {
   display: flex;
   flex-wrap: wrap;
@@ -35,4 +39,8 @@ body {
   .grid-item {
     flex-basis: calc(50% - 20px); /* Set flex basis for smaller screens */
   }
+}
+
+ul li {
+  list-style-type: none;
 }

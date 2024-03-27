@@ -12,7 +12,6 @@ const PalomuuriComponent = () => {
                 const response = await fetch('https://raw.githubusercontent.com/bc-web-ohjelmistokehitys/soc_data/01e6194a0f01540db2d884135f479d64d557882f/palomuuri_mock.json');
                 const data = await response.json();
                 setLogData(data);
-                console.log(data)
             } catch (error) {
                 console.error('Error fetching log data:', error);
             }
@@ -90,14 +89,14 @@ const PalomuuriComponent = () => {
                 )}
             </ul>
             <h3>Hyökkäysten havainnointi:</h3>
-            <div>
+            <ul>
             {logData.map(entry => 
                     entry.action === 'detected'
                         ? <li key={uuidv4()}>{entry.source_ip} porttiin {entry.destination_port} timestamp{' '}
                               {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
                         : null
                 )}
-            </div>
+            </ul>
         </div>
     );
 };

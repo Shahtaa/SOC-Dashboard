@@ -7,6 +7,7 @@ import './App.css'; // Import CSS file for styling
 
 const App = () => {
   return (
+
     <div className="container">
       <h1>My SOC Dashboard</h1>
       <div className="grid-container">

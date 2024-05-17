@@ -88,37 +88,37 @@ const ServerLogComponent = () => {
             </div>
             <h3>Käyttäjän kirjautuminen:</h3>
             <ul>
-            {logData.map(entry => 
+                {logData.map(entry =>
                     entry.event_type === 'login'
                         ? <li key={uuidv4()}>Käyttäjä {entry.username} kirjautui palvelimelle {entry.server_name} klo. {' '}
-                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                            {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
                         : null
                 )}
             </ul>
             <h3>Ohjelmistopäivitykset:</h3>
             <ul>
-            {logData.map(entry => 
+                {logData.map(entry =>
                     entry.event_type === 'update'
                         ? <li key={uuidv4()}>Palvelimella {entry.server_name} asennettiin päivitys {entry.update_name} klo. {' '}
-                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                            {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
                         : null
                 )}
             </ul>
             <h3>Virustentarkastukset:</h3>
             <ul>
-            {logData.map(entry => 
+                {logData.map(entry =>
                     entry.event_type === 'virus_scan'
                         ? <li key={uuidv4()}>Palvelimella {entry.server_name} suoritettiin virustentarkistus koko järjestelmälle klo. {' '}
-                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                            {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
                         : null
                 )}
             </ul>
             <h3>Poikkeavat toiminnot:</h3>
             <ul>
-            {logData.map(entry => 
+                {logData.map(entry =>
                     entry.event_type === 'abnormal_activity'
                         ? <li key={uuidv4()}>Epätavallisen suuri määrä epäonnistuneita kirjautumisyrityksiä havaittiin palvelimella {entry.server_name} klo. {' '}
-                              {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
+                            {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</li>
                         : null
                 )}
             </ul>
